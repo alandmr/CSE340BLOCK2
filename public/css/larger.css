@@ -1,0 +1,61 @@
+@media screen and (min-width: 1100px){
+    body {
+            background-image: url('../images/site/checkerboard.jpg');
+    }
+    
+    .container {
+        display: grid;
+        grid-template-columns: max-content;
+        justify-content: center;
+        align-content: center;
+            
+    }
+
+    .error{
+        grid-column: span 2;
+        justify-content: center;
+        text-align: center;
+        font-size: 30px;
+
+    }
+
+    .error h1{
+        font-size: 100px;
+    }
+    
+    .container2 {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border: 5px solid rgb(1, 176, 211);
+        background-color: white;
+        border-radius: 0.5em;
+    }
+    
+    
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 470px;
+        margin: 0 20px 0 20px;
+    }
+   
+
+    
+    #containerLine2 {
+        background-position: 90px 0px;
+        margin-top: 50px;
+    }
+
+    .botonImagen {
+
+        width: 220px;
+        height: 65px;
+        font-size: 20px;
+    }
+    
+        
+    
+    
+        
+               
+}

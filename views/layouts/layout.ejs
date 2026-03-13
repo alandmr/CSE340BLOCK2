@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-
 <body>
-    <div id="wrapper">
-        <%- include('../partials/header') %>
-        <%- include('../partials/navigation') %>
-
-        <main>
-            <%- body %>
-        </main>
-        <%- include('../partials/footer') %>
-    </div>    
+    <div id="wrapper" class="container">
+        <div class="container2">
+            <%- include('../partials/header') %>
+            <%- include('../partials/navigation') %>
+        
+            <main>
+                <%- body %>
+            </main>
+        
+            <%- include('../partials/footer') %>
+        </div>
+    </div>        
 </body>
 </html>

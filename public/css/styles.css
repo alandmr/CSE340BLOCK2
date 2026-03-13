@@ -1,6 +1,207 @@
 /******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+
+
+
+header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0px ;
 }
+
+header a{
+  text-decoration: none;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: #383636;
+  margin: 10px;
+  
+}
+
+.siteName a{
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 15px;
+  padding-top: 50px;
+}
+
+div #tools {
+  display: grid;
+}
+
+#tools a{
+  justify-self: end;
+}
+
+
+nav {
+  
+  background-color: #383636;
+  color: white;
+  height: 50px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  list-style-type: none;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+li{
+  margin-top: 18px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 200px;
+  margin: 0 20px 0 20px;
+}
+
+#line1 h1{
+  font-size: 28px;
+}
+
+#containerLine2 {
+  background-image: url(../images/vehicles/delorean.jpg);
+  background-repeat: no-repeat;
+  background-position: 50px 20px;
+  background-size: 70%;
+}
+
+#line2 h1{
+  font-size: 23px;
+}
+
+#line2 {
+  width: fit-content;
+  height: fit-content;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(1, 176, 211);
+  background-color: rgb(255, 255, 255, 0.8);
+}
+
+.botonImagen {
+  background-color: rgb(1, 176, 211);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  width: 120px;
+  height: 40px;
+}
+
+#line4 {
+  grid-row: 6/6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+  margin-top: -50px;
+}
+
+.containerLine4 {
+  background-color: rgb(1, 176, 211);
+  background-position: center;
+  height: 100px;
+  border: 1px solid;
+
+}
+
+#contLine4_1 {
+  grid-column: 1/1;
+  grid-row: 6/6;
+  display: flex;
+  flex-direction: column;
+}
+
+#contLine4_2 {
+  grid-column: 2/2;
+  grid-row: 6/6;
+  display: flex;
+  flex-direction: column;
+}
+
+#contLine4_3 {
+  grid-column: 1/2;
+  grid-row: 7/7;
+  display: flex;
+  flex-direction: column;
+}
+
+#contLine4_4 {
+  grid-column: 2/2;
+  grid-row: 7/7;
+  display: flex;
+  flex-direction: column;
+}
+
+#line4Img1 {
+  background-image: url(../images/upgrades/flux-cap.png);
+  background-repeat: no-repeat;
+
+}
+
+#line4Img2 {
+  background-image: url(../images/upgrades/flame.jpg);
+  background-repeat: no-repeat;
+}
+
+#line4Img3 {
+  background-image: url(../images/upgrades/bumper_sticker.jpg);
+  background-repeat: no-repeat;
+}
+
+#line4Img4 {
+  background-image: url(../images/upgrades/hub-cap.jpg);
+  background-repeat: no-repeat;
+}
+
+footer {
+  margin: 40px 20px 0px 20px;
+}
+
+
+@media screen and (min-width: 550px) {
+
+  main {
+    grid-template-rows: 50px 220px;
+  }
+
+
+}
+
+@media screen and (min-width: 620px) {
+  main {
+    grid-template-rows: 50px 280px;
+  }
+
+  #line1 h1 {
+    font-size: 35px;
+  }
+
+  #line2 h1 {
+    font-size: 28px;
+  }
+
+  #containerLine2 {
+    margin-top: 20px;
+    background-size: 70%;
+    background-position: 50px 0px;
+  }
+
+  #textLine2 {
+    font-size: 1.4em;
+  }
+
+  .botonImagen {
+    margin-top: 15px;
+
+  }
+
+}
+
+
