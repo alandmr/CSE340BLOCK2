@@ -1,0 +1,10 @@
+<% if (title) { %>
+<div>
+  <h1 style="margin-left: 20px;"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%# messages() %>
+
+<%- detail %>

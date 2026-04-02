@@ -6,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  console.log(data)
+  //console.log(data)
   let list = "<ul>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
@@ -32,7 +32,7 @@ module.exports = Util
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
   let grid
-  if(data.length > 0){
+  if(data.length > 0){   
     grid = '<ul id = "inv-display">'
     data.forEach(vehicle => { 
       grid += '<li id="vehicle-box">'
@@ -60,36 +60,27 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
-// Util.buildClassificationGrid = async function(data){
-//   let grid
-//   if(data.length > 0){
-//     grid = ''
-//     data.forEach(vehicle => { 
-//       grid += '<div id="vehicle-box">'
-//       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
-//       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-//       + 'details"><img src="' + vehicle.inv_thumbnail 
-//       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-//       +' on CSE Motors" /></a>'
-//       grid += '<div class="namePrice">'
-//       grid += '<hr />'
-//       grid += '<h2>'
-//       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
-//       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
-//       + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
-//       grid += '</h2>'
-//       grid += '<span>$' 
-//       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
-//       grid += '</div>'
-//       grid += '</div>'
-//     })
-//     grid += ''
-//   } else { 
-//     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
-//   }
-//   return grid
-// }
-
+/* **************************************
+* Build the detail view HTML
+* ************************************ */
+Util.buildDetailView = async function(data){
+  let detail
+  if(data.length > 0){
+    detail = '<div id="inv-detail">'
+    detail += '<section><img src="' + data[0].inv_image
+      +'" alt="Image of '+ data[0].inv_make + ' ' + data[0].inv_model 
+      +' on CSE Motors" /></section>'
+    detail += '<section><h2>'+data[0].inv_make+' '+data[0].inv_model+' Details'+'</h2>'
+    detail += '<h3> Price: $ '+new Intl.NumberFormat('en-US').format(data[0].inv_price)+'</h3>'
+    detail += '<p><span style="font-size:large; font-weight:bold">Description:</span> '+data[0].inv_description+'<p><div>'
+    detail += '<p><span style="font-size:large; font-weight:bold">Color: </span> '+data[0].inv_color+'<p>'
+    detail += '<p><span style="font-size:large; font-weight:bold">Miles: </span>'+new Intl.NumberFormat('en-US').format(data[0].inv_miles)+'<p></section>'
+  
+  } else { 
+    detail += '<p class="notice">Sorry, no matching vehicles could be found------>.</p>'
+  }
+  return detail
+}
 
 /* ****************************************
  * Middleware For Handling Errors

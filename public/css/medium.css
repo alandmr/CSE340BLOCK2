@@ -4,7 +4,7 @@
 
    #main-view { 
             grid-template-rows: 50px 320px;
-        }
+        }    
 
     .botonImagen {
         width: 150px;
@@ -35,6 +35,16 @@
     #main-view {
         grid-template-rows: 50px 400px;
         grid-template-columns: 1fr 1fr;
+    }
+    
+    section{
+    width: auto;    
+  }
+
+    #inv-detail{
+        grid-template-columns: 1fr 1fr;
+        max-width: 1024px;
+        max-height: fit-content;
     }
 
 

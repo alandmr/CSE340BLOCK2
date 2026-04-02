@@ -185,6 +185,7 @@ nav ul li a{
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-family: Arial, sans-serif;
   list-style-type: none;
+  /* max-width: 240px; */
 }
 
 #vehicle-box img{
@@ -228,13 +229,29 @@ margin-top: 5px;
 
 }
 
-  #inv-display{
-  
-        display: grid;
-        grid-template-columns: repeat(1, minmax(260px, 1fr));
-        gap: 25px;
-        padding: 0 20px 40px 20px;        
-    }
+#inv-display{
+
+      display: grid;
+      /* flex-wrap: wrap;
+      justify-content: center; */
+      grid-template-columns: repeat(1, minmax(260px, 1fr));
+      gap: 12px;
+      padding: 0 20px 40px 20px;        
+  }
+
+#inv-detail{
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 20px 0 20px;
+}
+
+#inv-detail img{
+  width: 100%;
+}
+
+#inv-detail section{
+  justify-self: center;
+}
 
 
 
@@ -251,6 +268,14 @@ margin-top: 5px;
     grid-template-rows: 50px 280px;
   }
 
+  section{
+    width: 500px;
+    margin-right: 40px;
+  }
+
+#inv-detail img{
+    width: auto;
+  }
   #inv-display{
   
         display: grid;
