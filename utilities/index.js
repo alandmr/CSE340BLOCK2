@@ -35,14 +35,14 @@ Util.buildClassificationGrid = async function(data){
   if(data.length > 0){   
     grid = '<ul id = "inv-display">'
     data.forEach(vehicle => { 
-      grid += '<li id="vehicle-box">'
+      grid += '<li class="vehicle-box">'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
-      +' on CSE Motors" /></a>'
+      +' on CSE Motors"></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
+      grid += '<hr>'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -67,18 +67,19 @@ Util.buildDetailView = async function(data){
   let detail
   if(data.length > 0){
     detail = '<div id="inv-detail">'
-    detail += '<section><img src="' + data[0].inv_image
+    detail += '<div><img src="' + data[0].inv_image
       +'" alt="Image of '+ data[0].inv_make + ' ' + data[0].inv_model 
-      +' on CSE Motors" /></section>'
-    detail += '<section><h2>'+data[0].inv_make+' '+data[0].inv_model+' Details'+'</h2>'
+      +' on CSE Motors"></div>'
+    detail += '<div><h2>'+data[0].inv_make+' '+data[0].inv_model+' Details'+'</h2>'
     detail += '<h3> Price: $ '+new Intl.NumberFormat('en-US').format(data[0].inv_price)+'</h3>'
-    detail += '<p><span style="font-size:large; font-weight:bold">Description:</span> '+data[0].inv_description+'<p><div>'
+    detail += '<p><span style="font-size:large; font-weight:bold">Description:</span> '+data[0].inv_description+'<p>'
     detail += '<p><span style="font-size:large; font-weight:bold">Color: </span> '+data[0].inv_color+'<p>'
-    detail += '<p><span style="font-size:large; font-weight:bold">Miles: </span>'+new Intl.NumberFormat('en-US').format(data[0].inv_miles)+'<p></section>'
+    detail += '<p><span style="font-size:large; font-weight:bold">Miles: </span>'+new Intl.NumberFormat('en-US').format(data[0].inv_miles)+'<p></div>'
   
   } else { 
     detail += '<p class="notice">Sorry, no matching vehicles could be found------>.</p>'
   }
+  detail += '</div>'
   return detail
 }
 

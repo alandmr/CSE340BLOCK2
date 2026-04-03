@@ -26,6 +26,10 @@
         padding: 0 20px 40px 20px;        
     }
 
+    .container2{
+        width: 1024px;
+  }
+
     
 }
 
@@ -37,7 +41,7 @@
         grid-template-columns: 1fr 1fr;
     }
     
-    section{
+    #inv-detail div{
     width: auto;    
   }
 
