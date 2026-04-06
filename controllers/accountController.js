@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs")
 async function buildLogin(req, res, next) {
   let nav = await utilities.getNav()
   //req.flash("notice", "This is a flash message.")
-  res.render("account/login", {
+  res.render("./account/login", {
     title: "Login",
     nav,
     errors: null,
@@ -20,7 +20,7 @@ async function buildLogin(req, res, next) {
 * *************************************** */
 async function buildRegister(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("account/register", {
+  res.render("./account/register", {
     title: "Register",
     nav,
     errors: null,

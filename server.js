@@ -17,6 +17,7 @@ const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
+const mgmtController = require("./controllers/invController")
 
 
 /* ***********************
@@ -59,12 +60,19 @@ app.use(static)
 app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+app.use("/", inventoryRoute)
+
+app.use("/add-classification", inventoryRoute)
+
+app.use("/add-inventory", inventoryRoute)
 // Invetory route detail
 app.use("/detail", inventoryRoute)
 
 app.use("/account",accountRoute)
 
 app.use("/register",accountRoute)
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
