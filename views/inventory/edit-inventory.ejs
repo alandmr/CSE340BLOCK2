@@ -18,34 +18,34 @@
   <div class="login-register-container">
     
     <h2><span>All fields are requerid</span></h2>
-    <label for="ClassificationName">Classification</label>
+    <label for="classificationList">Classification</label>
     <%- classificationSelect %>
 
-    <label for="invMake">Make</label>
+    <label for="inv_make">Make</label>
     <input type="text" id="inv_make" name="inv_make" required value="<%= locals.inv_make %>">
 
-    <label for="invModel">Model</label>
+    <label for="inv_model">Model</label>
     <input type="text" id="inv_model" name="inv_model" required value="<%= locals.inv_model %>">
 
-    <label for="invYear">Year</label>
+    <label for="inv_year">Year</label>
     <input type="text" id="inv_year" name="inv_year" required value="<%= locals.inv_year %>">
 
-    <label for="invPrice">Price</label>
+    <label for="inv_price">Price</label>
     <input type="text" id="inv_price" name="inv_price" required value="<%= locals.inv_price %>">
 
-    <label for="invMiles">Miles</label>
+    <label for="inv_miles">Miles</label>
     <input type="text" id="inv_miles" name="inv_miles" required value="<%= locals.inv_miles %>">
 
-    <label for="invColor">Color</label>
+    <label for="inv_color">Color</label>
     <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color %>">
 
-    <label for="invImage">Image Path</label>
+    <label for="inv_image">Image Path</label>
     <input type="text" id="inv_image" name="inv_image" required value="<%- inv_image %>">
 
-    <label for="invThumbnail">Thumbnail Path</label>
+    <label for="inv_thumbnail">Thumbnail Path</label>
     <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="<%- inv_thumbnail %>">
     
-    <label for="invDescription">Description</label>
+    <label for="inv_description">Description</label>
     <textarea name="inv_description" id="inv_description" required ><%- inv_description %></textarea>
     
     <div class="login-register-button">

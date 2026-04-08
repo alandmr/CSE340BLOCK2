@@ -18,5 +18,7 @@ utilities.handleErrors(invController.addInventory));
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 router.get("/edit/:inventoryId", utilities.handleErrors(invController.editInventory));
 router.post("/update/", invController.updateInventory)
+router.get("/delete/:inventoryId", utilities.handleErrors(invController.deleteInventoryView));
+router.post("/delete/", utilities.handleErrors(invController.deleteInventory));
 
 module.exports = router;
