@@ -327,6 +327,21 @@ margin-top: 5px;
   font-size: large;
 }
 
+.management p{
+  width: auto;
+  margin-right: 10px;
+}
+
+#classificationList{
+  width: auto;
+  padding: 10px 2px;
+  margin-bottom: 18px; 
+  border-radius: 6px;
+  border:#383636;
+  font-size: 15px;
+  border-style: solid;
+}
+
 
 
 

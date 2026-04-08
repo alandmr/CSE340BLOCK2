@@ -1,0 +1,60 @@
+<% if (title) { %>
+  <div>
+    <h1 style="margin-left: 20px;"><%= title %></h1>
+    <h1><%- messages() %></h1>
+    <% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+        <%  }) %>
+    </ul>
+    <% } %>
+  </div>    
+<% } else {
+  res.redirect('/')
+} %>
+
+<form action="/inv/update" method="post" id="formEditInventory">
+  <div class="login-register-container">
+    
+    <h2><span>All fields are requerid</span></h2>
+    <label for="ClassificationName">Classification</label>
+    <%- classificationSelect %>
+
+    <label for="invMake">Make</label>
+    <input type="text" id="inv_make" name="inv_make" required value="<%= locals.inv_make %>">
+
+    <label for="invModel">Model</label>
+    <input type="text" id="inv_model" name="inv_model" required value="<%= locals.inv_model %>">
+
+    <label for="invYear">Year</label>
+    <input type="text" id="inv_year" name="inv_year" required value="<%= locals.inv_year %>">
+
+    <label for="invPrice">Price</label>
+    <input type="text" id="inv_price" name="inv_price" required value="<%= locals.inv_price %>">
+
+    <label for="invMiles">Miles</label>
+    <input type="text" id="inv_miles" name="inv_miles" required value="<%= locals.inv_miles %>">
+
+    <label for="invColor">Color</label>
+    <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color %>">
+
+    <label for="invImage">Image Path</label>
+    <input type="text" id="inv_image" name="inv_image" required value="<%- inv_image %>">
+
+    <label for="invThumbnail">Thumbnail Path</label>
+    <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="<%- inv_thumbnail %>">
+    
+    <label for="invDescription">Description</label>
+    <textarea name="inv_description" id="inv_description" required ><%- inv_description %></textarea>
+    
+    <div class="login-register-button">
+        <button type="submit" disabled>Update Vehicle</button>
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
+    </div>
+  </div>
+</form>
+
+<script src="../../js/inv-update.js"></script>
