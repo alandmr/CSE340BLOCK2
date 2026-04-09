@@ -45,19 +45,37 @@ invCont.buildDetailByInventoryId = async function (req, res, next) {
 invCont.buildManagement = async function(req, res){
   const nav = await utilities.getNav()    
   const classificationSelect = await utilities.buildClassificationList()
-  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
-  req.user = decoded;          // datos del usuario
-  res.locals.user = decoded;   // disponible en EJS    
-  const userName = req.user.account_firstname
-  dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
+  let dataLogin = ""
+  const token = req.cookies.jwt
+  
+  if(token) {
+    
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);    
+    req.user = decoded;          // datos del usuario
+    res.locals.user = decoded;   // disponible en EJS    
+    const userName = req.user.account_firstname
+    dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>'
 
-  res.render("./inventory/vmanagement", {
-    title:"Vehicle Management",
+    res.render("./inventory/vmanagement", {
+      title:"Vehicle Management",
+      nav,
+      dataLogin,
+      classificationSelect,
+      errors: null,    
+    })
+
+  } else {
+    dataLogin = '<a title="Click to log in" href="/account/login"> My Account</a>'
+    req.flash(
+        "notice",
+        `You need to be logged, please sign in`)
+    res.render("./account/login", {
+    title:"Login",
     nav,
-    dataLogin,
-    classificationSelect,
+    dataLogin,    
     errors: null,    
   })
+  }      
 }
 
  

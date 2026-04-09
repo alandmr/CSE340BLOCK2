@@ -14,14 +14,20 @@
   line-height: 46px;
   margin-bottom: 40px;
 }
+
+.message-box p{
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .buttons-con .action-link-wrap {
   margin-top: 40px;
 }
 .buttons-con .action-link-wrap a {
-  background: #68c950;
+  background: #2e6d1e;
   padding: 8px 25px;
   border-radius: 4px;
-  color: #FFF;
+  color: #ffffff;
   font-weight: bold;
   font-size: 14px;
   -webkit-transition: all 0.3s linear;
@@ -140,7 +146,7 @@
 @media (min-width: 1200px) {
 
     .message-box {
-        left: 680px;  
+        left: 640px;  
     }
 }
 
@@ -148,7 +154,7 @@
 
     .message-box {
         top: 400px;
-        left: 720px;  
+        left: 660px;  
     }
 }
 
@@ -164,7 +170,7 @@
 
     .message-box {
         top: 400px;
-        left: 800px;  
+        left: 780px;  
     }
 }
 
@@ -172,6 +178,6 @@
 
     .message-box {
         top: 400px;
-        left: 1024px;  
+        left: 940px;  
     }
 }
