@@ -1,5 +1,7 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 
 const invCont = {}
 //const invDetail = {}
@@ -41,12 +43,18 @@ invCont.buildDetailByInventoryId = async function (req, res, next) {
 //  *  Build vehicle Management View
 //  * ************************** */
 invCont.buildManagement = async function(req, res){
-  const nav = await utilities.getNav()  
-  //req.flash("notice", "This is a flash message.")
+  const nav = await utilities.getNav()    
   const classificationSelect = await utilities.buildClassificationList()
+  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+  req.user = decoded;          // datos del usuario
+  res.locals.user = decoded;   // disponible en EJS    
+  const userName = req.user.account_firstname
+  dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
+
   res.render("./inventory/vmanagement", {
     title:"Vehicle Management",
     nav,
+    dataLogin,
     classificationSelect,
     errors: null,    
   })
@@ -59,11 +67,16 @@ invCont.buildManagement = async function(req, res){
 // /* ***************************
 invCont.addClassificationView = async function(req, res){
   const nav = await utilities.getNav()  
-  //req.flash("notice", "This is a flash message.")
+  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+  req.user = decoded;          // datos del usuario
+  res.locals.user = decoded;   // disponible en EJS    
+  const userName = req.user.account_firstname
+  dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
 
   res.render("./inventory/add-classification", {
     title:"Add Classification",
     nav,
+    dataLogin,
     errors: null,    
   })
 }
@@ -87,9 +100,15 @@ invCont.addClassification = async function(req, res){
         "notice",
         `The ${classification_name} classification was successfully added.`
       )
+      const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+      req.user = decoded;          // datos del usuario
+      res.locals.user = decoded;   // disponible en EJS    
+      const userName = req.user.account_firstname
+      dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
       res.status(201).render("inventory/vmanagement", {
         title: "Vehicle Management",
         nav,
+        dataLogin,
         errors: null
       })
     } else {
@@ -108,10 +127,17 @@ invCont.addClassification = async function(req, res){
 //  * ************************** */
 invCont.buildInventoryView = async function (req, res, next) {    
   const cList = await utilities.buildClassificationList(null)
-  let nav = await utilities.getNav()  
+  let nav = await utilities.getNav() 
+  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+  req.user = decoded;          // datos del usuario
+  res.locals.user = decoded;   // disponible en EJS    
+  const userName = req.user.account_firstname
+  dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
+
   res.render("./inventory/add-inventory", {
     title:  "Add Vehicle",
     nav,
+    dataLogin,
     cList,
     errors:null,
   })
@@ -138,9 +164,15 @@ invCont.addInventory = async function(req, res){
         "notice",
         `The ${inv_make} ${inv_model} car was successfully added.`
       )
+      const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+      req.user = decoded;          // datos del usuario
+      res.locals.user = decoded;   // disponible en EJS    
+      const userName = req.user.account_firstname
+      dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
       res.status(201).render("inventory/vmanagement", {
         title: "Vehicle Management",
         nav,
+        dataLogin,
         classificationSelect: cList,
         errors: null
       })
@@ -179,6 +211,13 @@ invCont.editInventory = async function (req, res, next) {
   const itemData = await invModel.getDetailItemByInventoryId(inv_id)
   const classificationSelect = await utilities.buildClassificationList(itemData[0].classification_id)
   const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
+
+  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+  req.user = decoded;          // datos del usuario
+  res.locals.user = decoded;   // disponible en EJS    
+  const userName = req.user.account_firstname
+  dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
+
   res.render("./inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
@@ -195,6 +234,7 @@ invCont.editInventory = async function (req, res, next) {
     inv_miles: itemData[0].inv_miles,
     inv_color: itemData[0].inv_color,
     classification_id: itemData[0].classification_id,
+    dataLogin,
   })
 }
 
@@ -237,6 +277,13 @@ invCont.updateInventory = async function (req, res, next) {
   } else {
     const classificationSelect = await utilities.buildClassificationList(classification_id)
     const itemName = `${inv_make} ${inv_model}`
+
+    const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+    req.user = decoded;          // datos del usuario
+    res.locals.user = decoded;   // disponible en EJS    
+    const userName = req.user.account_firstname
+    dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
+
     req.flash("notice", "Sorry, the insert failed.")
     res.status(501).render("inventory/edit-inventory", {
     title: "Edit " + itemName,
@@ -253,7 +300,8 @@ invCont.updateInventory = async function (req, res, next) {
     inv_price,
     inv_miles,
     inv_color,
-    classification_id
+    classification_id,
+    dataLogin,
     })
   }
 }
@@ -268,6 +316,13 @@ invCont.deleteInventoryView = async function (req, res, next) {
   let nav = await utilities.getNav()
   const itemData = await invModel.getDetailItemByInventoryId(inv_id)  
   const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
+
+  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+  req.user = decoded;          // datos del usuario
+  res.locals.user = decoded;   // disponible en EJS    
+  const userName = req.user.account_firstname
+  dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
+
   res.render("./inventory/delete-confirm", {
     title: "Delete " + itemName,
     nav,    
@@ -277,7 +332,7 @@ invCont.deleteInventoryView = async function (req, res, next) {
     inv_year: itemData[0].inv_year,
     inv_price: itemData[0].inv_price,
     errors: null,
-
+    dataLogin,
   })
 }
 

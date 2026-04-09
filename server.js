@@ -17,7 +17,6 @@ const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
-const mgmtController = require("./controllers/invController")
 const cookieParser = require("cookie-parser")
 
 
@@ -46,6 +45,13 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(cookieParser())
 
 app.use(utilities.checkJWTToken)
+
+
+app.use((req, res, next) => {
+  res.locals.dataLogin = '';
+  next();
+});
+
 
 // Express Messages Middleware
 app.use(require('connect-flash')())

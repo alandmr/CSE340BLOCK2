@@ -1,7 +1,10 @@
 <% if (title) { %>
   <div>
     <h1 style="margin-left: 20px;"><%= title %></h1>
-    <h1><%- messages() %></h1>
+    <% if (messages()){ %>
+      <h1><%- messages() %></h1>
+    <% } %>
+    
     <% if (errors) { %>
     <ul class="notice">
         <% errors.array().forEach(error => { %>
@@ -46,7 +49,7 @@
     <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="/images/vehicles/no-image.png">
     
     <label for="inv_description">Description</label>
-    <textarea name="inv_description" id="inv_description" required value="<%= locals.inv_description %>"></textarea>
+    <textarea name="inv_description" id="inv_description" required><%= locals.inv_description %></textarea>
     
     <div class="login-register-button">
         <button type="submit">Add Vehicle</button>

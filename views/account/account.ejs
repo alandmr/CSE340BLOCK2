@@ -1,7 +1,13 @@
 <% if (title) { %>
-  <div>
-    <h1 style="margin-left: 20px;"><%= title %></h1>
-    <h1><%- messages() %></h1>           
+  <div class="account-Management">
+    <h1><%= title %></h1>
+    <% if (messages()){ %>
+      <h1><%- messages() %></h1>
+    <% } %> 
+    <h2>Welcome <%- userName %></h2>  
+    <span>You're logged in. </span>  
+    <div class="account-mgnt-edit"><%- clientAdminOptions %></div>
+    
     <% if (errors) { %>
     <ul class="notice">
         <% errors.array().forEach(error => { %>
@@ -13,12 +19,4 @@
 <% } else {
   res.redirect('/')
 } %>
-
-
-
-<script>
-  setTimeout(() => {
-    window.location.href = "<%= redirectTo %>";
-  }, 1500);
-</script>
 

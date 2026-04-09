@@ -321,9 +321,12 @@ margin-top: 5px;
   font-weight: bold;
 }
 
+.management{
+  margin-left: 20px;
+}
+
 .management li{
   list-style-type: none;
-  margin-left: 20px;
   font-size: large;
 }
 
@@ -340,6 +343,14 @@ margin-top: 5px;
   border:#383636;
   font-size: 15px;
   border-style: solid;
+}
+
+.account-Management{  
+  margin-left: 20px;
+}
+
+.account-mgnt-edit{
+  margin-top: 10px;  
 }
 
 

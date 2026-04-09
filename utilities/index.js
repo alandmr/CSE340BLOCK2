@@ -27,6 +27,14 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
+/* ************************
+ * Header Loging 
+ ************************** */
+Util.getDataLogin = async function (req, res, next) {  
+  let list = '<a title="Click to log in" href="/account/login">My Account</a>'
+  return list
+}
+
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -128,14 +136,15 @@ Util.checkJWTToken = (req, res, next) => {
 /* ****************************************
  *  Check Login
  * ************************************ */
- Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
+ Util.checkLogin = (req, res, next) => {  
+  if (res.locals.loggedin) {    
     next()
   } else {
     req.flash("notice", "Please log in.")
     return res.redirect("/account/login")
   }
  }
+
 
 /* ****************************************
  * Middleware For Handling Errors

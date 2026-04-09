@@ -17,5 +17,10 @@ router.post("/register", regValidate.registationRules(), regValidate.checkRegDat
 utilities.handleErrors(accController.registerAccount))
 
 router.get("/", utilities.checkLogin, utilities.handleErrors(accController.accountLoginView));
+router.get("/logout", utilities.handleErrors(accController.accountLogout));
+
+router.get("/update/:userId", utilities.handleErrors(accController.updateView));
+router.post("/update/", regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(accController.updateAccount));
+router.post("/updatePassword/", regValidate.passwordRules(), regValidate.checkPasswordData, utilities.handleErrors(accController.updatePassword));
 
 module.exports = router;
