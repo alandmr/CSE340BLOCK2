@@ -1,0 +1,177 @@
+/* body {
+  background-color: #2F3242;
+} */
+
+.message-box {
+  margin-top: -50px;
+  margin-left: 20px;
+  color: #ff0000;
+  font-family: Roboto;
+  font-weight: 300;
+}
+.message-box h1 {
+  font-size: 60px;
+  line-height: 46px;
+  margin-bottom: 40px;
+}
+.buttons-con .action-link-wrap {
+  margin-top: 40px;
+}
+.buttons-con .action-link-wrap a {
+  background: #68c950;
+  padding: 8px 25px;
+  border-radius: 4px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 10px
+}
+.buttons-con .action-link-wrap a:hover {
+  background: #5A5C6C;
+  color: #fff;
+}
+
+#Polygon-1 , #Polygon-2 , #Polygon-3 , #Polygon-4 , #Polygon-4, #Polygon-5 {
+  -webkit-animation: float 1s infinite ease-in-out alternate;
+          animation: float 1s infinite ease-in-out alternate;
+}
+#Polygon-2 {
+  -webkit-animation-delay: .2s;
+          animation-delay: .2s;
+}
+#Polygon-3 {
+  -webkit-animation-delay: .4s;
+          animation-delay: .4s;
+}
+#Polygon-4 {
+  -webkit-animation-delay: .6s;
+          animation-delay: .6s;
+}
+#Polygon-5 {
+  -webkit-animation-delay: .8s;
+          animation-delay: .8s;
+}
+
+@-webkit-keyframes float {
+	100% {
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+}
+
+@keyframes float {
+	100% {
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+}
+@media screen and (min-width: 300px) {
+
+  .message-box {
+    margin-top: -50px;
+    margin-left: 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 401px) {
+
+    svg{
+        margin-left: 15px;
+    }
+
+  .message-box {
+    margin-top: -50px;
+    margin-left: 10px;    
+  }
+
+}
+
+@media (min-width: 500px) {
+
+    svg{
+        margin-left: 80px;
+    }
+}
+
+@media (min-width: 700px) {
+
+    svg{
+        margin-left: 50px;
+
+    }
+    .message-box {
+        position: absolute;
+        top: 400px;
+        left: 420px;    
+    }
+}
+
+@media (min-width: 800px) {
+
+    svg{
+        margin-left: 110px;
+
+    }
+    .message-box {
+        left: 520px;  
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .message-box {
+        left: 500px;  
+    }
+}
+
+@media (min-width: 1100px) {
+
+    .message-box {
+        top: 450px;
+        left: 600px;  
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .message-box {
+        left: 680px;  
+    }
+}
+
+@media (min-width: 1300px) {
+
+    .message-box {
+        top: 400px;
+        left: 720px;  
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .message-box {
+        top: 400px;
+        left: 750px;  
+    }
+}
+
+@media (min-width: 1500px) {
+
+    .message-box {
+        top: 400px;
+        left: 800px;  
+    }
+}
+
+@media (min-width: 1600px) {
+
+    .message-box {
+        top: 400px;
+        left: 1024px;  
+    }
+}

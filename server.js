@@ -69,6 +69,10 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 app.use(static)
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
+
+// Error 505 route
+app.get("/error", utilities.handleErrors(baseController.errorLink))
+
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
@@ -99,7 +103,7 @@ app.use(async (err, req, res, next) => {
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
   if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
   res.render("errors/error", {
-    title: err.status || 'Server Error',
+    title: err.status  || 'Server Error',
     message,
     nav
   })
