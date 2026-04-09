@@ -1,9 +1,7 @@
 <% if (title) { %>
   <div>
     <h1 style="margin-left: 20px;"><%= title %></h1>
-    <% if (messages()){ %>
-      <h1><%- messages() %></h1>
-    <% } %>
+    <h1><%- messages() %></h1>
     
     <% if (errors) { %>
     <ul class="notice">
