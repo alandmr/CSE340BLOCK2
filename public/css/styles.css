@@ -356,9 +356,14 @@ margin-top: 5px;
 }
 
 .account-mgnt-edit{
+  display: flex;
+  flex-direction: column;  
   margin-top: 10px;  
 }
 
+.account-mgnt-edit a{
+  margin-bottom: 10px;
+}
 
 
 

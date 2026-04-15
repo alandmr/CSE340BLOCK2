@@ -23,4 +23,8 @@ router.get("/update/:userId", utilities.handleErrors(accController.updateView));
 router.post("/update/", regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(accController.updateAccount));
 router.post("/updatePassword/", regValidate.passwordRules(), regValidate.checkPasswordData, utilities.handleErrors(accController.updatePassword));
 
+router.get("/manage/", utilities.handleErrors(accController.accountManageView));
+router.get("/delete/:accountId", utilities.handleErrors(accController.deleteAccountView));
+router.post("/delete/", utilities.handleErrors(accController.deleteAccount));
+
 module.exports = router;

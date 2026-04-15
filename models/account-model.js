@@ -53,6 +53,17 @@ async function getAccountById (account_id) {
   }
 }
 
+/* *****************************
+* Return all account data 
+* ***************************** */
+async function getAccount () {
+  try {    
+    return await pool.query("SELECT * FROM account ORDER BY account_id")
+  } catch (error) {
+    return new Error("No accounts found")
+  }
+}
+
 
 /* ***************************
  *  Update user First Name, Last Name and Email
@@ -100,5 +111,18 @@ async function updatePassword(
   }
 }
 
+/* ***************************
+ *  Delete Account
+ * ************************** */
+ async function deleteAccount(account_id) {
+  try {
+    const sql = 'DELETE FROM account WHERE account_id = $1'
+    const data = await pool.query(sql, [account_id])
+  return data
+  } catch (error) {
+    new Error("Delete Account Error")
+  }
+}
+
 module.exports = {registerAccount, checkExistingEmail, 
-  getAccountByEmail, getAccountById, updateAccount, updatePassword}
+  getAccountByEmail, getAccountById, getAccount,updateAccount, updatePassword, deleteAccount}

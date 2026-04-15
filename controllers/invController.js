@@ -364,10 +364,17 @@ invCont.deleteInventory = async function (req, res, next) {
     inv_id = parseInt(req.params.inventoryId),
     inv_make,
     inv_model,
+    inv_year,
+    inv_price
   } = req.body
 
   let nav = await utilities.getNav()
   const deleteResult = await invModel.deleteInventoryItem(inv_id,)
+  const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET);    
+  req.user = decoded;          // datos del usuario
+  res.locals.user = decoded;   // disponible en EJS    
+  const userName = req.user.account_firstname
+  const dataLogin = '<a title="Click to log out" href="/account/logout"> Welcome '+userName+' LOGOUT</a>' 
 
   if (deleteResult) {
     const itemName = `${inv_make} ${inv_model}`
@@ -385,6 +392,7 @@ invCont.deleteInventory = async function (req, res, next) {
     inv_model,
     inv_year,
     inv_price,
+    dataLogin,
     })
   }
 }
